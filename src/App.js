@@ -30,32 +30,32 @@ class App extends Component {
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submit");
-    console.log(this.state);
-    const contact = {
-      id: uuidv4(),
-      name: this.state.name,
-      number: this.state.number,
-    };
-    this.state.contacts.find(
-      ({ name }) => name === contact.name && contact.name
-    )
-      ? alert(`${contact.name} already exists`)
-      : this.setState((prev) => {
-          return {
-            contacts: [...prev.contacts, contact],
-          };
-        });
-    this.setState({ name: "", number: "" });
-  };
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Submit");
+  //   console.log(this.state);
+  //   const contact = {
+  //     id: uuidv4(),
+  //     name: this.state.name,
+  //     number: this.state.number,
+  //   };
+  //   this.state.contacts.find(
+  //     ({ name }) => name === contact.name && contact.name
+  //   )
+  //     ? alert(`${contact.name} already exists`)
+  //     : this.setState((prev) => {
+  //         return {
+  //           contacts: [...prev.contacts, contact],
+  //         };
+  //       });
+  //   this.setState({ name: "", number: "" });
+  // };
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(value);
-    this.setState({ [name]: value });
-  };
+  // handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   console.log(value);
+  //   this.setState({ [name]: value });
+  // };
 
   filterByName = () => {
     return this.state.contacts.filter((contact) =>
@@ -74,7 +74,7 @@ class App extends Component {
   render() {
     const filterContact = this.filterByName();
     // console.log(filterContact);
-    console.log(this.props);
+    // console.log(this.props);
     const {
       themeConfig: { fontColor, bodybg },
     } = this.props;
