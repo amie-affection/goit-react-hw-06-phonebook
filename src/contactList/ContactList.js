@@ -1,14 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 import OneContact from "../oneContact/OneContact";
 import FilterContacts from "../filterContacts/FilterContacts";
 
-const ContactList = ({ contacts, filter, onChange, deleteContact }) => {
+const ContactList = ({ contactList, filter, onChange, deleteContact }) => {
   return (
     <>
       <h2 style={{ marginLeft: "30px" }}>Contacts</h2>
       <FilterContacts filter={filter} onChange={onChange} />
       <ul>
-        {contacts.map((contact) => (
+        {contactList.map((contact) => (
           <OneContact
             contact={contact}
             key={contact.id}
@@ -20,4 +21,10 @@ const ContactList = ({ contacts, filter, onChange, deleteContact }) => {
   );
 };
 
-export default ContactList;
+const mapStateToProps = (state) => {
+  return {
+    contactList: state.contactRoot.contactReducer,
+  };
+};
+
+export default connect(mapStateToProps)(ContactList);

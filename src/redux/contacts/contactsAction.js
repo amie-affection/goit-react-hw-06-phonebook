@@ -18,12 +18,15 @@ const deleteContact = (idContact) => ({
   payload: { id: idContact },
 });
 
-const filterContact = (nameContact) => ({
-  type: contactsType.FILTER_CONTACT,
+// const filterContact = (nameContact) => ({
+//   type: contactsType.FILTER_CONTACT,
 
-  payload: {
-    name: nameContact,
-  },
-});
+//   payload: {
+//     name: nameContact,
+//   },
+// });
 
-export default { addContact, deleteContact, filterContact };
+export default {
+  addContact, deleteContact,
+  // filterContact
+};
