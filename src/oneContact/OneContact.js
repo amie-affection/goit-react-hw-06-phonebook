@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import contactsAction from "../redux/contacts/contactsAction";
 import styles from "./OneContact.module.css";
 
 const OneContact = ({ contact: { id, name, number }, deleteContact }) => {
@@ -9,7 +11,7 @@ const OneContact = ({ contact: { id, name, number }, deleteContact }) => {
       <button
         type="button"
         className={styles.btnDelete}
-        onClick={() => deleteContact(id)}
+        onClick={deleteContact}
       >
         Delete
       </button>
@@ -17,4 +19,10 @@ const OneContact = ({ contact: { id, name, number }, deleteContact }) => {
   );
 };
 
-export default OneContact;
+const mapDispatchToProps = (dispatch, { id }) => {
+  return {
+    deleteContact: () => dispatch(contactsAction.deleteContact(id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(OneContact);

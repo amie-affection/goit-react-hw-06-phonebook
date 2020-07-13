@@ -9,16 +9,22 @@ const contactReducer = (state = [], action) => {
     case contactsType.DELETE_CONTACT:
       return state.filter((contact) => contact.id !== action.payload.id);
 
-    case contactsType.FILTER_CONTACT:
-      return state.map((contact) =>
-        contact.name === action.payload.name
-          ? { name: action.payload.name }
-          : contact
-      );
-
     default:
       return state;
   }
 };
 
-export default combineReducers({ contactReducer: contactReducer });
+const filterReducer = (state = '', action) => {
+  switch (action.type) {
+    case contactsType.FILTER_CONTACT:
+      return action.payload.name;
+    
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  contactReducer: contactReducer,
+  filterReducer: filterReducer,
+});

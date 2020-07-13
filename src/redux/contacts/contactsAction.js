@@ -12,21 +12,22 @@ const addContact = (name, number) => ({
   },
 });
 
-const deleteContact = (idContact) => ({
+const deleteContact = (idContactDelete) => ({
   type: contactsType.DELETE_CONTACT,
 
-  payload: { id: idContact },
+  payload: { id: idContactDelete },
 });
 
-// const filterContact = (nameContact) => ({
-//   type: contactsType.FILTER_CONTACT,
+const filterContact = (nameContact) => ({
+  type: contactsType.FILTER_CONTACT,
 
-//   payload: {
-//     name: nameContact,
-//   },
-// });
+  payload: {
+    name: nameContact,
+  },
+});
 
 export default {
-  addContact, deleteContact,
-  // filterContact
+  addContact,
+  deleteContact,
+  filterContact,
 };

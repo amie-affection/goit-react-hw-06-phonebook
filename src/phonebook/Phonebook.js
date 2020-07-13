@@ -19,6 +19,10 @@ class Phonebook extends Component {
     const { contactName, number } = this.state;
     const { addContact } = this.props;
 
+    this.setState({
+      contactName: "",
+      number: "",
+    });
     addContact(contactName, number);
   };
 
